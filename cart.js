@@ -72,22 +72,37 @@ function getCartData(couponCode = "") {
             },
             data,
             success: async (result) => {
-                $("#cartTable tbody tr").remove();
+                // $('#session p').remove();
+                // $('#date li').remove();
+                // $('#time li').remove()\
+
                 const classArr = result.classes
                 const enrolledClassArr = result.enrolledClasses
                 const classes = [...classArr, ...enrolledClassArr]
                 const key = "classId"
                 const classesArr = await findOcc(classes, key)
                 console.log("classesArr:::", classesArr)
+                console.log(document.getElementsByClassName("session"))
                 $.each(classesArr, function (i, element) {
-                    $('#cartTable tbody').append("<tr>\
-                        <td>"+ element.session + "</td>\
-                        <td>"+ element.dates + "</td>\
-                        <td>"+ element.time + "</td>\
-                        <td>"+ element.tution + "</td>\
-                        <td><button type='button' class='btn' onclick='openStudentModal("+ element.classId + ")'>Add Student</button> <button type='button' class='btn' onclick='removeFromCartByClassId(" + element.classId + ")'>Remove</button></td>\
-                    </tr>");
+                    // $('.container-fluid row cart-1 p').append("<tr>\
+                    //     <td>"+ element.session + "</td>\
+                    //     <td>"+ element.dates + "</td>\
+                    //     <td>"+ element.time + "</td>\
+                    //     <td>"+ element.tution + "</td>\
+                    //     <td><button type='button' class='btn' onclick='openStudentModal("+ element.classId + ")'>Add Student</button> <button type='button' class='btn' onclick='removeFromCartByClassId(" + element.classId + ")'>Remove</button></td>\
+                    // </tr>");
 
+                    $('#session p').append(
+                        element.session
+                    )
+                    $('#date li').append(
+                        element.dates
+                    )
+                    $('#time li').append(
+                        element.time
+                    )
+
+                    
                     //  $('#displayStudentTable tbody').append("<tr>\
                     //     <td>"+ element.name[0] + "</td>\
                     //     <td>"+ element.name[1] + "</td>\
@@ -103,11 +118,15 @@ function getCartData(couponCode = "") {
             const filteredArr = cartStudents.filter(x => x.classIds[0] === element.classId.toString())
             $('#displayStudentTable tbody').empty()
             $.each(filteredArr, function (i, element) {
-                $('#displayStudentTable tbody').append("<tr id=" + element.uniqueId + ">\
-                    <td>"+ element.firstName + "</td>\
-                    <td>"+ element.lastName + "</td>\
-                    <td>"+ element.dateOfBirth + "</td>\
-                </tr>");
+                // $('#displayStudentTable tbody').append("<tr id=" + element.uniqueId + ">\
+                //     <td>"+ element.firstName + "</td>\
+                //     <td>"+ element.lastName + "</td>\
+                //     <td>"+ element.dateOfBirth + "</td>\
+                // </tr>");
+                $('#name #firstName').append(element.firstName)
+                $('#name #mail').append(element.mail)
+                $('#last-mobile #lastName').append(element.lastName)
+                $('#birthdate #birth').append(element.dateOfBirth)
             });
         }
     }

@@ -1,0 +1,528 @@
+h6 {
+    color: #F18234;
+    font-family: Poppins;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 31px;
+    margin-bottom: 21px;
+}
+
+.modal-header {
+    border-bottom: none;
+    font-family: Poppins;
+}
+
+.close {
+    background-color: transparent;
+    border: none;
+}
+
+.modal-dialog {
+    max-width: 80%;
+}
+
+.modal-content {
+    border-radius: 8px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-footer .btn-done {
+    border: none;
+    border-radius: 5px;
+    background-color: #F18234;
+    color: #fff;
+    padding: 15px 48px 15px 49px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: Poppins;
+}
+
+.modal-footer .add {
+    border: none;
+    background-color: transparent;
+    color: #34A2F1;
+    font-family: Poppins;
+}
+
+h5 {
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+}
+
+label {
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+}
+
+p {
+    margin: 0;
+}
+
+.form-control {
+    border: 1px solid #707070;
+}
+
+.input-div {
+    display: block;
+    width: 30%;
+    padding-right: 30px;
+}
+
+.input-div .remove {
+    display: none;
+}
+
+.form-control:disabled {
+    background-color: #B1B1B1;
+}
+
+.remove-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    width: 10%;
+    background-color: #EBF6FE;
+    color: #FC0D1B;
+    margin-top: 30px;
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
+
+.tution-fee {
+    padding-top: 4px;
+    padding-right: 30px;
+}
+
+.tution-fee p {
+    text-align: right;
+}
+
+.tution-fee h4 {
+    text-align: right;
+}
+
+p {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    font-family: Poppins;
+}
+
+li {
+    color: #707070;
+}
+
+span {
+    color: #707070;
+    font-family: Poppins;
+    text-align: center;
+    font-size: 14px;
+}
+
+.orange {
+    color: #F18234;
+}
+
+.row {
+    margin: 0;
+}
+
+
+/* .cart {
+    margin: 8px;
+} */
+
+.cart-content {
+    border-radius: 8px;
+    background-color: #EBF6FE;
+}
+
+.cart-1 {
+    margin-bottom: 18px;
+}
+
+.edit-remove {
+    margin-left: -10px;
+}
+
+.edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 99px;
+    height: 88px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 7px 7px 0px 0px;
+    color: #fff;
+    background: #34A2F1;
+    backdrop-filter: blur(6px);
+    padding-top: 26px;
+    padding-bottom: 14px;
+}
+
+.edit i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+.edit p {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+}
+
+.remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 99px;
+    height: 88px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 0px 0px 7px 7px;
+    color: #FC0D1B;
+    background: #D1D1D1;
+    backdrop-filter: blur(6px);
+    padding-top: 18px;
+    padding-bottom: 12px;
+}
+
+.remove i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+.coupon {
+}
+
+.btn-primary {
+    background-color: #34A2F1;
+    color: white;
+    font-family: Poppins;
+    padding: 12px 32px;
+    border: none;
+    margin-left: -12px;
+}
+
+.btn-primary:hover {
+    background-color: #2a9aeb;
+    color: white;
+}
+
+.total-div {
+    display: flex;
+    justify-content:flex-end ;
+    align-items: center;
+}
+
+.total {
+    border: 2px solid #F18234;
+    /* border-right: none; */
+    border-radius: 8px;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.25);
+    background: #FFF;
+    margin-bottom: 18px;
+}
+
+.sub-total span {
+    color: #000;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.14px;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.buy-button {
+    background-color: #F18234;
+    color: #fff;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 15px 0px 15px 0px;
+    border-radius: 5px;
+    border: none;
+}
+
+.buy-button:hover {
+    background-color: #db762d;
+    color: #fff;
+}
+
+.buy-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.pay {
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.18px;
+}
+
+.pay span {
+    color: #000;
+}
+
+.justify-content-left {
+    width: 70%;
+    justify-content: left;
+    align-items: center;
+}
+
+.justify-content-right {
+    width: 30%;
+    justify-content: right;
+    align-items: center;
+}
+
+.hide-show {
+    display: none;
+}
+
+
+/* .accordion {
+    display: none;
+} */
+
+.collapse-on-sm {
+    display: flex;
+}
+
+.collapse-on-sm.show {
+    display: flex;
+}
+
+.accordion-button {
+    display: none;
+    width: auto;
+    background-color: transparent;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.collapse:not(.show) {
+    display: flex;
+}
+
+@media (max-width: 992px) {
+    /* .row {
+        display: block;
+    } */
+    .modal-dialog {
+        max-width: 100%;
+    }
+    .modal-footer {
+        width: 100%;
+        margin-top: 36px;
+        padding: 0;
+    }
+    .modal-footer .btn-done {
+        width: 50%;
+        margin: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .modal-footer .add {
+        margin: 0;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #34A2F1;
+        border: none;
+        background: none;
+        margin: 0;
+    }
+    h6 {
+        margin-top: 22px;
+        margin-bottom: 14px;
+    }
+    li {
+        padding-left: 4px;
+        list-style: none;
+        color: #000;
+    }
+    .remove-modal {
+        display: none;
+    }
+    .student-2 {
+        display: none;
+    }
+    h6 {
+        font-size: 16px;
+        margin-bottom: 14px;
+    }
+    .birth-remove {
+        width: 100%;
+        display: flex;
+    }
+    .input-div .birth {
+        width: 90%;
+        display: flex;
+    }
+    .input-div .remove {
+        width: 48px;
+        height: 48px;
+        margin-left: 16px;
+        border-radius: 7px;
+        padding: 12px;
+        display: flex;
+    }
+    .input-div .remove i {
+        padding: 0;
+    }
+    .input-div {
+        width: 100%;
+        padding-right: 0;
+    }
+    .para p {
+        width: auto;
+    }
+    .remove-mob button {
+        background-color: transparent;
+        color: #FC0D1B;
+        border: none;
+    }
+    .hide-mob {
+        display: none;
+    }
+    .edit-remove {
+        display: none;
+    }
+    .edit-mob span {
+        color: #000025;
+    }
+    .edit-mob button {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+    }
+    .tution-div {
+        display: none;
+    }
+    .tution-fee {
+        display: flex;
+        align-items: center;
+        background: #000025;
+        color: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        padding-top: 32px;
+        z-index: -1;
+        margin-top: -20px;
+    }
+    .tution-fee p {
+        text-align: left;
+    }
+    .tution-fee h4 {
+        text-align: right;
+        margin: 0;
+    }
+    .form-control {
+        margin-right: -100px;
+        margin-top: -2px;
+        margin-bottom: -2px;
+    }
+    .hide-show {
+        display: flex;
+        align-items: center;
+    }
+    .heading {
+        width: 100%;
+        margin-bottom: 11px;
+    }
+    .heading-left {
+        align-items: center;
+        width: 90%;
+        background-color: #34A2F1;
+        color: #fff;
+        border-top-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .heading-right {
+        width: 15%;
+        align-items: center;
+        justify-content: center;
+        color: #F18234;
+    }
+    .remove {
+        width: 100%;
+        height: auto;
+        background-color: #EBF6FE;
+    }
+    .collapse {
+        display: none;
+    }
+    .collapse:not(.show) {
+        display: none;
+    }
+    .collapse.show {
+        display: block;
+        max-height: auto;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+    /* .btn-primary {
+        margin-left: 20px;
+    } */
+    .accordion-button {
+        display: flex;
+        padding: 12px;
+    }
+    .total {
+        box-shadow: none;
+        border: 0.5px solid #F18234;
+        /* stroke-width: 0.5px; */
+        stroke: #F18234;
+    }
+}

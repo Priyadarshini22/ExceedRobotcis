@@ -84,57 +84,99 @@ function getCartData(couponCode = "") {
                 console.log("classesArr:::", classesArr)
                 console.log(document.getElementsByClassName("session"))
                 $.each(classesArr, function (i, element) {
-                    // $('.container-fluid row cart-1 p').append("<tr>\
-                    //     <td>"+ element.session + "</td>\
-                    //     <td>"+ element.dates + "</td>\
-                    //     <td>"+ element.time + "</td>\
-                    //     <td>"+ element.tution + "</td>\
-                    //     <td><button type='button' class='btn' onclick='openStudentModal("+ element.classId + ")'>Add Student</button> <button type='button' class='btn' onclick='removeFromCartByClassId(" + element.classId + ")'>Remove</button></td>\
-                    // </tr>");
+                  
 
-                    $('#session p').append(
-                        element.session
-                    )
-                    $('#date li').append(
-                        element.dates
-                    )
-                    $('#time li').append(
-                        element.time
-                    )
+                    $('#studentDetails').append(` 
+                    <div class="container-fluid row cart-1">
+                    <div class="container cart-content col-lg-10 row p-0">
+                        <div class="row p-0">
+                            <div class="d-flex col-lg-6 heading p-0">
+                                <div class="d-flex heading-left p-3">
+                                    <p>${element.session}</p>
+                                </div>
+                                <div class="heading-right hide-show remove-mob">
+                                    <button data-toggle="modal" data-target="#remove">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class=" col-lg-3 hide-show px-3 py-2">
+                                <span class="">Age: </span>
+                                <li>${element.age}</li>
+                            </div>
+                            <div class="col-lg-3 d-flex px-3 py-2">
+                                <span class="hide-show">Date: </span>
+                                <li>${element.dates}</li>
+                            </div>
+                            <div class="d-flex col-lg-3 px-3 py-2">
+                                <span class="hide-show">Time: </span>
+                                <li>${element.time}</li>
+                            </div>
 
-                    
-                    //  $('#displayStudentTable tbody').append("<tr>\
-                    //     <td>"+ element.name[0] + "</td>\
-                    //     <td>"+ element.name[1] + "</td>\
-                    //     <td>"+ element.dateOfBirth + "</td>\
-                    //     </tr>");
-                        // $('#displayStudentModal').modal('show');
+                        </div>
+                        <hr class="m-0">
+                        <div class="accordion p-0" id="accordionExample">
+                            <div class="d-flex px-3">
+                                <div class="d-flex justify-content-left">
+                                    Student Details
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    </button>
+                                </div>
+                                <div class="justify-content-right hide-show edit-mob">
+                                    <button type="button" data-toggle="modal" data-target="#edit">
+                                        <i class="bi bi-pencil-fill "></i><span align="right" class="ps-2 hide-show">Edit</span>
+                                    </button>
+                                </div>
+                            </div>
 
-                     let cartStudents = sessionStorage.getItem("cartStudents");
-    if (cartStudents) {
-        cartStudents = JSON.parse(cartStudents);
-        console.log(cartStudents)
-        if (cartStudents.length > 0) {
-            const filteredArr = cartStudents.filter(x => x.classIds[0] === element.classId.toString())
-            $('#displayStudentTable tbody').empty()
-            $.each(filteredArr, function (i, element) {
-                // $('#displayStudentTable tbody').append("<tr id=" + element.uniqueId + ">\
-                //     <td>"+ element.firstName + "</td>\
-                //     <td>"+ element.lastName + "</td>\
-                //     <td>"+ element.dateOfBirth + "</td>\
-                // </tr>");
-                $('#name #firstName').append(element.firstName)
-                $('#name #mail').append(element.mail)
-                $('#last-mobile #lastName').append(element.lastName)
-                $('#birthdate #birth').append(element.dateOfBirth)
-            });
-        }
-    }
-                });
+                            <div class="cart-details row" id='details'>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-3 row p-0 hide-show">
+                        <div class="orange tution-fee">
+                            <p>Tution Fee +HST
+
+                            </p>
+                            <h4 align="right">$360</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 py-3 edit-remove ">
+
+                        <button type="button" class="edit" data-toggle="modal" data-target="#edit">
+                                <div class="d-block">
+                                    <i class="bi bi-pencil-fill "></i>
+                                    <p>Edit</p>
+                                </div>
+                        </button>
+                        <button class="remove" data-toggle="modal" data-target="#remove">
+                            <div class="d-block">
+                                <i class="bi bi-trash"></i>
+                                <p>Remove</p>
+                            </div>
+                        </button>
+                    </div>
+
+
+                </div>
+                  `)
+
+                  $('#course').append(`  <div class="d-flex justify-content-left ">
+                  <span class="py-1 ">${element.courseName}</span>
+              </div>
+              <div class="d-flex justify-content-right ">
+                  <span>$360</span>
+              </div>`)
+                   
+              displayStudentsByClassId(element.classId)
+
+     
+    })
+
 
                 // $.each(classesArr, function (i, element) {
 
-                //     displayStudentsByClassId(element.classId)
 
                 //     $('#displayStudentTable tbody').append("<tr>\
                 //         <td>"+ element.name[0] + "</td>\
@@ -148,24 +190,11 @@ function getCartData(couponCode = "") {
                     sessionStorage.setItem("couponCode", result.cartSummary.couponCode);
 
                     if(result.cartSummary.subTotal) {
-                        $('#cartTable tbody').append("<tr>\
-                                                <td></td>\
-                                                <td></td>\
-                                                <td></td>\
-                                                <td><span style='float:right'>Sub-Total</span></td>\
-                                                <td>"+ result.cartSummary.subTotal + "</td>\
-                                                <td></td>\
-                                            </tr>");
+                        $('#subTotal span').append( result.cartSummary.subTotal
+                                                );
                     }
                     if(result.cartSummary.tuitionTax) {
-                        $('#cartTable tbody').append("<tr>\
-                                                <td></td>\
-                                                <td></td>\
-                                                <td></td>\
-                                                <td><span style='float:right'>HST</span></td>\
-                                                <td>"+ result.cartSummary.tuitionTax + "</td>\
-                                                <td></td>\
-                                            </tr>");
+                        $('#hst span').append( result.cartSummary.tuitionTax );
                     }
                     if(result.cartSummary.discount) {
                         $("#couponCodeDiv").css("display", "none")
@@ -182,14 +211,8 @@ function getCartData(couponCode = "") {
                         $("#couponCodeDiv").css("display", "block")
                     }
                     if(result.cartSummary.total) {
-                        $('#cartTable tbody').append("<tr>\
-                                                <td></td>\
-                                                <td></td>\
-                                                <td></td>\
-                                                <td><span style='float:right'>Total</span></td>\
-                                                <td>"+ result.cartSummary.total + "</td>\
-                                                <td></td>\
-                                            </tr>");
+                        $('#toPay span').append(result.cartSummary.total
+                                                );
                     }
                 }
             },
@@ -364,25 +387,51 @@ function openShowStudentModal(classId) {
     $('#showStudentModal').modal('show');
 }
 
-// function displayStudentsByClassId(classId) {
-//     let cartStudents = sessionStorage.getItem("cartStudents");
-//     if (cartStudents) {
-//         cartStudents = JSON.parse(cartStudents);
-//         console.log(cartStudents)
-//         if (cartStudents.length > 0) {
-//             const filteredArr = cartStudents.filter(x => x.classIds[0] === classId.toString())
-//             $('#displayStudentTable tbody').empty()
-//             $.each(filteredArr, function (i, element) {
-//                 $('#displayStudentTable tbody').append("<tr id=" + element.uniqueId + ">\
-//                     <td>"+ element.firstName + "</td>\
-//                     <td>"+ element.lastName + "</td>\
-//                     <td>"+ element.dateOfBirth + "</td>\
-//                 </tr>");
-//             });
-//         }
-//     }
-//     $('#displayStudentModal').modal('show');
-// }
+function displayStudentsByClassId(classId) {
+    let cartStudents = sessionStorage.getItem("cartStudents");
+    if (cartStudents) {
+        cartStudents = JSON.parse(cartStudents);
+        console.log(cartStudents)
+        if (cartStudents.length > 0) {
+            const filteredArr = cartStudents.filter(x => x.classIds[0] === classId.toString())
+            $('#displayStudentTable tbody').empty()
+            $.each(filteredArr, function (i, element) {
+                $('#details').append(`<div class=" col-lg-9 row p-3 pt-0 accordion-collapse collapse" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="col-lg-5 py-2 px-0">
+                    <div class="d-flex para">
+                        <p class="">First Name</p>
+                        <p class="hide-show"> : ${element.firstName}</p>
+                    </div>
+                    <span class="hide-mob">loremipsum@gmail.com</span>
+                </div>
+                <div class="col-lg-4 py-2 px-0">
+                    <div class="d-flex para">
+                        <p>Last Name</p>
+                        <p class="hide-show"> : ${element.lastName}</p>
+                    </div>
+                    <span class="hide-mob">+91 9003557123</span>
+                </div>
+                <div class="col-lg-3 py-2 px-0">
+                    <div class="d-flex para">
+                        <p>Date of birth</p>
+                        <p class="hide-show">: ${element.dateOfBirth}</p>
+                    </div>
+                    <span class="hide-mob"> :${element.dateOfBirth}</span></p>
+                </div>
+            </div>
+            <div class="col-lg-3 row p-0 tution-div">
+                <div class="orange tution-fee">
+                    <p>Tution Fee +HST
+
+                    </p>
+                    <h4 align="right">$360</h4>
+                </div>
+            </div>`)
+            });
+        }
+    }
+    $('#displayStudentModal').modal('show');
+}
 
 function submitCart() {
     window.location = './login.php'

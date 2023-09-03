@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="add"><i class="bi bi-plus-lg"></i> Add Student</button>
+                    <button class="add"><i class="bi bi-plus-lg" onclick="addStudentForm()"></i> Add Student</button>
                     <button type="submit" class="btn-done">Done</button>
 
                 </div>
@@ -145,12 +145,11 @@
             <div class="container col-lg-9 order-2 order-lg-1 p-0" id='studentDetails'>
             </div>
             
-            <div class="col-lg-3 total-div order-1 order-lg-2">
-                <div class="container p-3 total ">
-                    <div class="d-flex " id='course'>
-                      
-                    </div>
-                   
+            <div class="col-lg-3 total-div order-1 order-lg-2 ">
+                <div class="container p-3 total">
+                    
+                   <div id='course'>
+</div>
 
 
                     <div class="container coupon mt-4 mb-3 p-0 ">
@@ -186,7 +185,7 @@
                     </div>
 
                     <div class="d-grid mt-4 ">
-                        <button type="button " class="buy-button btn-block ">Proceed to buy (2 Items)</button>
+                        <button type="button " class="buy-button btn-block " id='count'></button>
                     </div> 
                 </div>
             </div>

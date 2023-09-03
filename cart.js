@@ -75,8 +75,11 @@ function getCartData(couponCode = "") {
                 // $('#session p').remove();
                 // $('#date li').remove();
                 // $('#time li').remove()\
+               
 
                 const classArr = result.classes
+                console.log(classArr)
+               
                 const enrolledClassArr = result.enrolledClasses
                 const classes = [...classArr, ...enrolledClassArr]
                 const key = "classId"
@@ -85,7 +88,7 @@ function getCartData(couponCode = "") {
                 console.log(document.getElementsByClassName("session"))
                 $.each(classesArr, function (i, element) {
                   
-
+                    const temp=element.classId.toString()
                     $('#studentDetails').append(` 
                     <div class="container-fluid row cart-1">
                     <div class="container cart-content col-lg-10 row p-0">
@@ -119,7 +122,7 @@ function getCartData(couponCode = "") {
                             <div class="d-flex px-3">
                                 <div class="d-flex justify-content-left">
                                     Student Details
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=#${temp} aria-expanded="true" aria-controls="collapseOne">
                                     </button>
                                 </div>
                                 <div class="justify-content-right hide-show edit-mob">
@@ -130,6 +133,16 @@ function getCartData(couponCode = "") {
                             </div>
 
                             <div class="cart-details row" id='details'>
+                            <div class=" col-lg-9 row p-3 pt-0 accordion-collapse collapse" id=${temp} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            </div>
+                            <div class="col-lg-3 row p-0 tution-div">
+                            <div class="orange tution-fee">
+                                <p>Tution Fee +HST
+            
+                                </p>
+                                <h4 align="right">${element.tution}</h4>
+                            </div>
+                        </div>
                             </div>
                             
                         </div>
@@ -161,13 +174,8 @@ function getCartData(couponCode = "") {
 
                 </div>
                   `)
-
-                  $('#course').append(`  <div class="d-flex justify-content-left ">
-                  <span class="py-1 ">${element.courseName}</span>
-              </div>
-              <div class="d-flex justify-content-right ">
-                  <span>$360</span>
-              </div>`)
+               console.log(element.courseName)
+                 
                    
               displayStudentsByClassId(element.classId)
 
@@ -185,6 +193,22 @@ function getCartData(couponCode = "") {
                 //         </tr>");
                 //     });
                 
+                $.each(result.classes, function (i, course) {
+                    
+                    $('#course').append(` <div class="d-flex">
+                    <div class="d-flex justify-content-left">
+                        <span class="py-1 ">${course.courseName}</span>
+                    </div>
+                    <div class="d-flex justify-content-right">
+                        <span>${course.price}</span>
+                    </div>
+                </div>`)
+                console.log(course.courseName)
+
+                })
+                console.log(result.classes.length)
+                $('#count').append(`Proceed to Pay (${result.classes.length} items)`)
+
                 if(result.cartSummary) {
                     const { cartSummary } = result
                     sessionStorage.setItem("couponCode", result.cartSummary.couponCode);
@@ -392,17 +416,20 @@ function displayStudentsByClassId(classId) {
     if (cartStudents) {
         cartStudents = JSON.parse(cartStudents);
         console.log(cartStudents)
+        const temp=classId.toString()
+
         if (cartStudents.length > 0) {
             const filteredArr = cartStudents.filter(x => x.classIds[0] === classId.toString())
             $('#displayStudentTable tbody').empty()
             $.each(filteredArr, function (i, element) {
-                $('#details').append(`<div class=" col-lg-9 row p-3 pt-0 accordion-collapse collapse" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                
+                $(`#${temp}`).append(`
                 <div class="col-lg-5 py-2 px-0">
-                    <div class="d-flex para">
-                        <p class="">First Name</p>
-                        <p class="hide-show"> : ${element.firstName}</p>
-                    </div>
-                    <span class="hide-mob">loremipsum@gmail.com</span>
+                                        <div class="d-flex para">
+                                            <p class="">First Name</p>
+                                            <p class="hide-show"> : ${element.firstName}</p>
+                                        </div>
+                                        <span class="hide-mob">loremipsum@gmail.com</span>
                 </div>
                 <div class="col-lg-4 py-2 px-0">
                     <div class="d-flex para">
@@ -416,17 +443,9 @@ function displayStudentsByClassId(classId) {
                         <p>Date of birth</p>
                         <p class="hide-show">: ${element.dateOfBirth}</p>
                     </div>
-                    <span class="hide-mob"> :${element.dateOfBirth}</span></p>
+                    <span class="hide-mob"> : ${element.dateOfBirth}</span></p>
                 </div>
-            </div>
-            <div class="col-lg-3 row p-0 tution-div">
-                <div class="orange tution-fee">
-                    <p>Tution Fee +HST
-
-                    </p>
-                    <h4 align="right">$360</h4>
-                </div>
-            </div>`)
+          `)
             });
         }
     }
